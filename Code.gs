@@ -189,7 +189,6 @@ const SHEETS_CONFIG = {
 
       ['Sekcja', 'Vendorzy opłaceni', "=COUNTIF('Vendors Choice'!H2:H200,\"Wybrany\")", '', ''],
       ['Sekcja', '% miejsc przypisanych', "=IFNA(1-AVERAGE('Seating Plan'!N2:N200)/Setup!C9,0)", '100%', '']
-
     ]
   },
   'Save the Date': {
@@ -221,7 +220,6 @@ const SHEETS_CONFIG = {
       ['Para', 'Przygotowania', "='Wedding Timeline'!B2", "='Wedding Timeline'!I2", 'Gotowość na 11:00', 'Hotel', '+48 600 111 222', 'Zabierz bukiet'],
       ['Świadkowie', 'Ceremonia', "='Wedding Timeline'!B4", "='Wedding Timeline'!I4", 'Pomoc przy obrączkach', 'Kościół', '+48 600 777 888', ''],
       ['Fotograf', 'First Look', "='Wedding Timeline'!B3", "='Wedding Timeline'!I3", 'Zdjęcia pary', 'Ogród', '', 'Golden hour jeśli zaznaczone']
-
     ]
   },
   'Packing List': {
@@ -913,11 +911,13 @@ function ensureMetricsSheets_() {
   }
   sheet.getRange('A1:B6').setValues([
     ['Metryka', 'Wartość'],
-    ['RSVP Tak', '=COUNTIF('Guest List'!H2:H500,"Tak")'],
-    ['RSVP Nie', '=COUNTIF('Guest List'!H2:H500,"Nie")'],
-    ['RSVP Brak', '=COUNTIF('Guest List'!H2:H500,"Brak")'],
+
+    ['RSVP Tak', "=COUNTIF('Guest List'!H2:H500,\"Tak\")"],
+    ['RSVP Nie', "=COUNTIF('Guest List'!H2:H500,\"Nie\")"],
+    ['RSVP Brak', "=COUNTIF('Guest List'!H2:H500,\"Brak\")"],
     ['% potwierdzonych', '=IFERROR(B2/(B2+B3+B4),0)'],
-    ['Liczba gości', '=COUNTA('Guest List'!A2:A500)']
+    ['Liczba gości', "=COUNTA('Guest List'!A2:A500)"]
+
   ]);
 }
 
