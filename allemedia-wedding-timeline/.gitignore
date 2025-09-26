@@ -1,6 +1,0 @@
-node_modules
-assets/admin.js
-assets/public.js
-assets/*.css
-.DS_Store
-.vscode
