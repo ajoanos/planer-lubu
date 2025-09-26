@@ -111,6 +111,7 @@ function allemedia_wt_admin_assets( $hook ) {
     wp_enqueue_style( 'allemedia-wt-print', ALLEMEDIA_WT_URL . 'assets/print.css', array(), ALLEMEDIA_WT_VERSION, 'print' );
 
     wp_enqueue_script( 'allemedia-wt-admin', ALLEMEDIA_WT_URL . 'assets/admin.js', array(), ALLEMEDIA_WT_VERSION, true );
+    wp_script_add_data( 'allemedia-wt-admin', 'type', 'module' ); // Skrypt jako moduł ES6
     wp_localize_script(
         'allemedia-wt-admin',
         'AllemediaWT',
@@ -140,6 +141,7 @@ function allemedia_wt_public_assets() {
     wp_enqueue_style( 'allemedia-wt-styles', ALLEMEDIA_WT_URL . 'assets/styles.css', array(), ALLEMEDIA_WT_VERSION );
     wp_enqueue_style( 'allemedia-wt-print', ALLEMEDIA_WT_URL . 'assets/print.css', array(), ALLEMEDIA_WT_VERSION, 'print' );
     wp_enqueue_script( 'allemedia-wt-public', ALLEMEDIA_WT_URL . 'assets/public.js', array(), ALLEMEDIA_WT_VERSION, true );
+    wp_script_add_data( 'allemedia-wt-public', 'type', 'module' ); // Skrypt jako moduł ES6
     wp_localize_script(
         'allemedia-wt-public',
         'AllemediaWT',
