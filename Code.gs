@@ -122,8 +122,8 @@ const LOCALIZATION = {
 };
 
 const CALENDAR_DEFAULT_REMINDERS = [
-  { method: CalendarApp.NotificationMethod.POPUP, minutes: 60 },
-  { method: CalendarApp.NotificationMethod.EMAIL, minutes: 24 * 60 }
+  { type: 'popup', minutes: 60 },
+  { type: 'email', minutes: 24 * 60 }
 ];
 
 const CHECKLIST_ICONS = {
@@ -651,7 +651,15 @@ function PushTimelineToCalendar() {
 Osoba odpowiedzialna: ${owner || ''}
 Kontakt: ${contact || ''}`
     });
-    CALENDAR_DEFAULT_REMINDERS.forEach(reminder => event.addPopupReminder(reminder.minutes));
+    CALENDAR_DEFAULT_REMINDERS.forEach(reminder => {
+      if (reminder.type === 'popup' && typeof event.addPopupReminder === 'function') {
+        event.addPopupReminder(reminder.minutes);
+      }
+      if (reminder.type === 'email' && typeof event.addEmailReminder === 'function') {
+        event.addEmailReminder(reminder.minutes);
+      }
+    });
+
     logCalendarEvent_(stage, event.getId());
   });
 }
