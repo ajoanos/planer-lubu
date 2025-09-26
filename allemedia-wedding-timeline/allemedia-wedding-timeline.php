@@ -58,6 +58,8 @@ function allemedia_wt_init() {
     Allemedia_WT_Post_Type::init();
     Allemedia_WT_REST::init();
 
+    add_filter( 'script_loader_tag', 'allemedia_wt_force_module_attribute', 10, 3 );
+
     // Rejestracja shortcode
     add_shortcode( 'allemedia_timeline', 'allemedia_wt_shortcode' );
 
@@ -69,6 +71,29 @@ function allemedia_wt_init() {
     add_action( 'wp_enqueue_scripts', 'allemedia_wt_public_assets' );
 }
 add_action( 'init', 'allemedia_wt_init' );
+
+/**
+ * Dodaje atrybut type="module" do wybranych skryptów.
+ *
+ * @param string $tag    Pełny tag skryptu.
+ * @param string $handle Uchwyt skryptu.
+ * @param string $src    URL źródła skryptu.
+ *
+ * @return string
+ */
+function allemedia_wt_force_module_attribute( $tag, $handle, $src ) {
+    unset( $src );
+
+    if ( ! in_array( $handle, array( 'allemedia-wt-admin', 'allemedia-wt-public' ), true ) ) {
+        return $tag;
+    }
+
+    if ( false !== strpos( $tag, 'type="module"' ) ) {
+        return $tag;
+    }
+
+    return preg_replace( '/^<script\b/', '<script type="module"', $tag, 1 );
+}
 
 /**
  * Rejestracja strony admina.
