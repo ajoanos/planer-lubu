@@ -1,0 +1,34 @@
+/*
+ * Styl wydruku A4.
+ */
+@page {
+  size: A4 portrait;
+  margin: 1.5cm;
+}
+
+body.print-guest .wt-section,
+body.print-crew .wt-section,
+body.print-guest .wt-public,
+body.print-crew .wt-public {
+  box-shadow: none !important;
+  background: #fff !important;
+}
+
+body.print-guest .wt-actions,
+body.print-crew .wt-actions,
+body.print-guest #wt-wizard,
+body.print-crew #wt-wizard,
+body.print-guest .wt-live,
+body.print-crew .wt-live {
+  display: none !important;
+}
+
+body.print-crew .wt-event-title::after {
+  content: ' (Ekipa)';
+  color: #0f172a;
+}
+
+body.print-guest .wt-event-title::after {
+  content: ' (Goście)';
+  color: #475569;
+}
