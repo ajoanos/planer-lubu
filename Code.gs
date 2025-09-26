@@ -186,8 +186,10 @@ const SHEETS_CONFIG = {
       ['KPI', 'Budżet - wykonanie', '=IFNA(Wedding Budget!C103,0)', '', ''],
       ['KPI', 'Budżet - odchyłka', '=IFNA(Wedding Budget!C104,0)', '', ''],
       ['Sekcja', 'Postęp checklisty', '=IFNA(Packing List!E2,0)', '100%', ''],
+
       ['Sekcja', 'Vendorzy opłaceni', "=COUNTIF('Vendors Choice'!H2:H200,\"Wybrany\")", '', ''],
       ['Sekcja', '% miejsc przypisanych', "=IFNA(1-AVERAGE('Seating Plan'!N2:N200)/Setup!C9,0)", '100%', '']
+
     ]
   },
   'Save the Date': {
@@ -215,9 +217,11 @@ const SHEETS_CONFIG = {
       'Rola', 'Etap', 'Start', 'Koniec', 'Opis', 'Lokalizacja', 'Kontakt', 'Uwagi'
     ]],
     sampleData: [
+
       ['Para', 'Przygotowania', "='Wedding Timeline'!B2", "='Wedding Timeline'!I2", 'Gotowość na 11:00', 'Hotel', '+48 600 111 222', 'Zabierz bukiet'],
       ['Świadkowie', 'Ceremonia', "='Wedding Timeline'!B4", "='Wedding Timeline'!I4", 'Pomoc przy obrączkach', 'Kościół', '+48 600 777 888', ''],
       ['Fotograf', 'First Look', "='Wedding Timeline'!B3", "='Wedding Timeline'!I3", 'Zdjęcia pary', 'Ogród', '', 'Golden hour jeśli zaznaczone']
+
     ]
   },
   'Packing List': {
@@ -264,7 +268,9 @@ const SHEETS_CONFIG = {
       'Metryka', 'Opis', 'Wartość'
     ]],
     sampleData: [
+
       ['Sala', 'Wynajem', '15000', '5000', '=C2-D2', 'zaliczka', "=VLOOKUP(B2,'Vendors Choice'!B:N,1,false)", ''],
+
       ['Muzyka', 'DJ', '4000', '2000', '=C3-D3', 'unpaid', '', ''],
       ['Transport', 'Bus', '2000', '0', '=C4-D4', 'unpaid', '', ''],
       ['Metryka', 'Plan (suma)', '=SUM(C2:C100)', ''],
